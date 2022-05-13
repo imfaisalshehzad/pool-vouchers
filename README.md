@@ -56,3 +56,11 @@ You can also create vouchers via admin panel dashboard.
 You can access the APIs details on:
 
     $ http://127.0.0.1:8000/collection/schema/swagger/
+
+
+### Testcase:
+Run test by using the below command in terminal.
+
+    $ make run-test
+
+

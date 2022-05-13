@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from pool.models import Voucher, Customer
+from pool.models import Voucher, Customer, SpecialOffer
 
 
 class VoucherSerializer(serializers.ModelSerializer):
@@ -56,4 +56,13 @@ class GenerateVoucherSerializer(serializers.ModelSerializer):
         fields = (
             'expiration_date',
             'special_offer',
+        )
+
+
+class GenerateOffersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SpecialOffer
+        fields = (
+            'name',
+            'discount',
         )
