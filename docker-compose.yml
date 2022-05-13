@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  web:
+    restart: always
+    build: .
+    expose:
+      - "8000"
+    image: voucher
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000
+             /usr/local/bin/gunicorn vouchers.wsgi:application -w 2 -b :8000 --reload"
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - 8000:8000

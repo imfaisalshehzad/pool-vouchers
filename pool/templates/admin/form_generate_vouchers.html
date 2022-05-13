@@ -1,0 +1,25 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <form action="" method="post" class="generate_voucher">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="set_generate_voucher_action">
+        <input type="hidden" name="do_action" value="yes">
+        <div>
+            <div>
+                <label for="special_offer">Special Offer</label>
+                {{ form.offers }}
+            </div>
+            <div>
+                <label for="expiry_date">Expiry Date</label>
+                {{ form.expiry_date }}
+            </div>
+            <div>
+                <input type="submit" class="default" style="float: none" value="Generate">
+            </div>
+            <div>
+                {{ form.genre.errors }}
+            </div>
+        </div>
+    </form>
+{% endblock %}

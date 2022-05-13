@@ -1,0 +1,11 @@
+asgiref==3.5.1
+attrs==21.4.0
+backports.zoneinfo==0.2.1
+Django==4.0.4
+djangorestframework==3.13.1
+drf-spectacular==0.22.1
+shortuuid==1.0.9
+django-object-actions==4.0.0
+Faker==13.11.0
+factory-boy==3.2.1
+gunicorn==20.1.0
