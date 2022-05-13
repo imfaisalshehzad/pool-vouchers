@@ -8,7 +8,8 @@ app_name = "pool_api"
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    path('', views.VoucherAPIView.as_view()),
-    path('verify/', views.VoucherValidationAPIView.as_view()),
-    path('generate/', views.GenerateVoucherAPIView.as_view()),
+    path('', views.VoucherAPIView.as_view(), name='email-return-voucher-codes'),
+    path('verify/', views.VoucherValidationAPIView.as_view(), name='verify-voucher'),
+    path('generate/', views.GenerateVoucherAPIView.as_view(), name='generate-voucher'),
+    path('offers/', views.GenerateOffersAPIView.as_view(), name='generate-offers'),
 ]

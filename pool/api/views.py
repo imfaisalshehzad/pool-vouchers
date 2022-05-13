@@ -7,9 +7,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.utils import timezone
 
-from pool.models import Voucher, Customer
+from pool.models import Voucher, Customer, SpecialOffer
 from .serializers import VoucherSerializer, ValidCustomerSerializer, ValidVoucherSerializer, VoucherDiscountSerializer, \
-    GenerateVoucherSerializer
+    GenerateVoucherSerializer, GenerateOffersSerializer
 
 
 class VoucherAPIView(APIView):
@@ -117,3 +117,32 @@ class GenerateVoucherAPIView(APIView):
         return Response({
             'vouchers': serializer.data
         }, status=status.HTTP_201_CREATED)
+
+
+class GenerateOffersAPIView(APIView):
+    serializer_class = GenerateOffersSerializer
+
+    @extend_schema(
+        methods=['GET'],
+        summary="Get all Offers",
+        description="Get all Offers",
+    )
+    def get(self, request, *args, **kwargs):
+        queryset = SpecialOffer.objects.all()
+        serializer = GenerateOffersSerializer(queryset, many=True)
+        return Response({"offers": serializer.data})
+
+    @extend_schema(
+        methods=['POST'],
+        summary="Generate Special Offer",
+        description="Generate Special Offer",
+    )
+    def post(self, request):
+        body = GenerateOffersSerializer(data=request.data)
+        body.is_valid(raise_exception=True)
+        offer = SpecialOffer.objects.create(
+            name=body.validated_data['name'],
+            discount=body.validated_data['discount'],
+        )
+        offer.save()
+        return Response()
