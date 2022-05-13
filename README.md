@@ -41,9 +41,18 @@ You can create dummy data by running the mentioned below command.
     $ make sample-data
 
 ### Django Admin Panel URL:
+User your login details that you have create for the super admin.
 
     $ http://127.0.0.1:8000/admin/
 
+
+### Admin Panel Generate Vouchers
+You can also create vouchers via admin panel dashboard.
+
+   ![alt text](https://i.imgur.com/T81LMPv.png)
+
+
 ### Interact with APIs on this URL:
+You can access the APIs details on:
 
     $ http://127.0.0.1:8000/collection/schema/swagger/
